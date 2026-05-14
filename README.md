@@ -1,4 +1,5 @@
 # Krucket
+<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/950072d0-d966-44fc-9c7a-9f70e00ed48e" />
 
 Krucket is a lightweight session replay and product analytics platform focused on helping developers and businesses understand how users actually interact with their websites.
 
