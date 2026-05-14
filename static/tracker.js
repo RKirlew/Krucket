@@ -39,8 +39,8 @@
   });
   document.addEventListener("mousemove", (e) => {
     sendEvent("MouseMove", {
-      x: e.movementX,
-      y: e.movementY,
+      x: e.pageX,
+      y: e.pageY,
     });
   });
   document.addEventListener("scroll", (e) => {
