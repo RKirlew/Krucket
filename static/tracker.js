@@ -37,7 +37,12 @@
       y: e.clientY,
     });
   });
-
+  document.addEventListener("mousemove", (e) => {
+    sendEvent("MouseMove", {
+      x: e.movementX,
+      y: e.movementY,
+    });
+  });
   document.addEventListener("scroll", (e) => {
     sendEvent("ScrollStart", {
       startPos: window.scrollY,

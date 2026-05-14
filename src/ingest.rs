@@ -14,6 +14,12 @@ pub async fn handle_ingest(Json(event): Json<Event>) -> StatusCode {
         EventType::PageView => {
             println!("Page view on {}", event.url);
         }
+
+        EventType::MouseMove => {
+            let x = event.data["x"].as_f64().unwrap();
+            let y = event.data["y"].as_f64().unwrap();
+            println!("Mouse move to  x={},y={}", x, y);
+        }
         _ => {}
     }
     StatusCode::OK
