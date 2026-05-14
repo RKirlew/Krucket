@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Krucket | High-Performance Session Replay</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>Krucket</h1>
+                <p class="subtitle">
+                    The lightweight, open-source Hotjar alternative. <br />
+                    Built for speed with <strong>Rust</strong> and
+                    <strong>SQLite</strong>.
+                </p>
+                <a href="/dashboard" class="btn-primary">View Dashboard</a>
+            </header>
+
+            <h2 class="section-title">Features</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>DOM-Based Replay</h3>
+                    <p>
+                        Uses MutationObservers to record exact UI changes rather
+                        than heavy video, keeping payloads tiny and replays
+                        crystal clear.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Privacy by Design</h3>
+                    <p>
+                        Client-side masking of sensitive PII. Automatically
+                        redacts passwords and credit card fields before data
+                        leaves the browser.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Geo-Analytics</h3>
+                    <p>
+                        Real-time event processing with IP-to-Country mapping
+                        powered by high-performance Rust lookups.
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="section-title">The Stack</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Backend: Rust & Axum</h3>
+                    <p>
+                        An incredibly fast ingestion engine designed to handle
+                        thousands of concurrent event streams with minimal CPU
+                        overhead.
+                    </p>
+                    <div class="pill-container">
+                        <span class="tech-pill">Axum</span>
+                        <span class="tech-pill">Tokio</span>
+                        <span class="tech-pill">Serde</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Edge: Mutation Tracker</h3>
+                    <p>
+                        A vanilla JS tracking script (less than 10KB) that
+                        captures scrolls, clicks, and DOM mutations without
+                        slowing down your site.
+                    </p>
+                    <div class="pill-container">
+                        <span class="tech-pill">ES6+</span>
+                        <span class="tech-pill">MutationObserver</span>
+                        <span class="tech-pill">MsgPack</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Storage: SQLite (WAL)</h3>
+                    <p>
+                        Simple, portable, and surprisingly robust. Uses
+                        Write-Ahead Logging to ensure smooth concurrent reads
+                        and writes.
+                    </p>
+                    <div class="pill-container">
+                        <span class="tech-pill">SQLx</span>
+                        <span class="tech-pill">WAL Mode</span>
+                        <span class="tech-pill">Migrations</span>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                &copy; 2026 Krucket Open Source Project. Built for the modern
+                web.
+            </footer>
+        </div>
+    </body>
+</html>

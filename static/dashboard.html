@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Krucket Dashboard | Scroll Test</title>
+        <link rel="stylesheet" href="dashboard.css" />
+        <style>
+            /* Quick internal styles to ensure the layout handles the extra height */
+            .main {
+                padding: 2rem;
+            }
+            .section-spacer {
+                margin-bottom: 50px;
+            }
+            .content-block {
+                background: #f4f4f4;
+                padding: 40px;
+                margin-top: 20px;
+                border-radius: 8px;
+                border: 1px dashed #ccc;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+            th,
+            td {
+                text-align: left;
+                padding: 12px;
+                border-bottom: 1px solid #ddd;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="layout">
+            <aside class="sidebar">
+                <a href="/"><h2>Krucket</h2></a>
+                <nav>
+                    <a href="/dashboard">Overview</a>
+                    <a href="#analytics">Analytics</a>
+                    <a href="#reports">Reports</a>
+                    <a href="#settings">Settings</a>
+                </nav>
+            </aside>
+
+            <main class="main">
+                <header>
+                    <h1>Dashboard</h1>
+                    <p>Live events coming soon</p>
+                </header>
+
+                <!-- Initial Stat Cards -->
+                <section class="cards">
+                    <div class="card">
+                        <h3>Events</h3>
+                        <p>1,284</p>
+                    </div>
+                    <div class="card">
+                        <h3>Sessions</h3>
+                        <p>8,402</p>
+                    </div>
+                    <div class="card">
+                        <h3>Countries</h3>
+                        <p>42</p>
+                    </div>
+                </section>
+
+                <!-- Scroll Trigger Section 1: Data Table -->
+                <section id="analytics" class="section-spacer">
+                    <h2>Detailed Analytics</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Page Path</th>
+                                <th>Visitors</th>
+                                <th>Bounce Rate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>/home</td>
+                                <td>4,500</td>
+                                <td>12%</td>
+                            </tr>
+                            <tr>
+                                <td>/pricing</td>
+                                <td>1,200</td>
+                                <td>35%</td>
+                            </tr>
+                            <tr>
+                                <td>/docs</td>
+                                <td>800</td>
+                                <td>5%</td>
+                            </tr>
+                            <tr>
+                                <td>/blog/how-to-scroll</td>
+                                <td>600</td>
+                                <td>45%</td>
+                            </tr>
+                            <tr>
+                                <td>/contact</td>
+                                <td>150</td>
+                                <td>20%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Scroll Trigger Section 2: Large Content Blocks -->
+                <section id="reports" class="section-spacer">
+                    <h2>Activity Log</h2>
+                    <div class="content-block">
+                        <h4>System Update v2.4</h4>
+                        <p>
+                            This is a placeholder block to increase page depth.
+                            Scrolling past this point should definitely trigger
+                            your tracker.js scroll events.
+                        </p>
+                    </div>
+                    <div class="content-block">
+                        <h4>User Feedback</h4>
+                        <p>
+                            More content to ensure the viewport is filled and
+                            overflowing. Scroll detection usually triggers at
+                            25%, 50%, 75%, and 100% depth.
+                        </p>
+                    </div>
+                    <div class="content-block">
+                        <h4>Performance Metrics</h4>
+                        <p>Average Load Time: 0.4s</p>
+                        <p>Server Latency: 22ms</p>
+                    </div>
+                </section>
+
+                <!-- Scroll Trigger Section 3: Footer/End of Page -->
+                <section
+                    id="settings"
+                    class="section-spacer"
+                    style="height: 600px"
+                >
+                    <h2>Footer Region</h2>
+                    <p>
+                        This section has an explicit height to push the page
+                        even further down.
+                    </p>
+                    <div class="card" style="margin-top: 400px">
+                        <h3>Bottom of Page Reached</h3>
+                        <p>Your scroll detection test is complete.</p>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <script
+            src="tracker.js"
+            data-site-id="test-site-123"
+            data-endpoint="http://localhost:3000"
+            async
+        ></script>
+    </body>
+</html>

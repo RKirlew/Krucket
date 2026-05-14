@@ -1,0 +1,140 @@
+:root {
+    /* Pastel Cloud Palette */
+    --bg-top: #e0f2fe; /* Light Sky Blue */
+    --bg-bottom: #fdf2f8; /* Soft Cotton Candy Pink */
+    --card-bg: rgba(255, 255, 255, 0.6);
+    --primary: #8b5cf6; /* Soft Purple */
+    --primary-hover: #7c3aed;
+    --text: #1e293b;
+    --text-muted: #475569;
+    --border: rgba(255, 255, 255, 0.4);
+    --pill-bg: rgba(139, 92, 246, 0.1);
+}
+
+body {
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+        sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    /* Cloud-like mesh gradient */
+    background: linear-gradient(
+        135deg,
+        var(--bg-top) 0%,
+        #ede9fe 50%,
+        var(--bg-bottom) 100%
+    );
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+    /* Soft sunset gradient for the logo */
+    background: linear-gradient(to right, #6366f1, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px; /* More rounded for a softer feel */
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(139, 92, 246, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    background-color: var(--primary-hover);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+}
+
+.section-title {
+    margin-top: 6rem;
+    font-size: 2rem;
+    border-bottom: 3px solid #ddd6fe;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    color: #5b21b6;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.card {
+    /* Glassmorphism effect */
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 24px;
+    text-align: left;
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.07);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    margin-top: 0;
+    color: var(--primary);
+    font-size: 1.4rem;
+}
+
+.pill-container {
+    margin-top: auto;
+    padding-top: 1rem;
+}
+
+.tech-pill {
+    display: inline-block;
+    background: var(--pill-bg);
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin: 0.2rem;
+    color: var(--primary);
+    font-weight: 500;
+    border: 1px solid rgba(139, 92, 246, 0.1);
+}
+
+footer {
+    margin-top: 6rem;
+    padding-bottom: 4rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
