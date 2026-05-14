@@ -3,6 +3,8 @@
   const eventQueue = [];
   const siteId = script.getAttribute("data-site-id");
   let maxDepth = 0;
+  let lastMouseMoveEventTime = 0;
+  const throttleMS = 100;
   let reachedMilestones = new Set();
   const endpoint =
     script.getAttribute("data-endpoint") || "http://localhost:3000";
@@ -38,10 +40,15 @@
     });
   });
   document.addEventListener("mousemove", (e) => {
-    sendEvent("MouseMove", {
-      x: e.pageX,
-      y: e.pageY,
-    });
+    const now = Date.now();
+    if (now - lastMouseMoveEventTime > throttleMS) {
+      sendEvent("MouseMove", {
+        x: e.pageX,
+        y: e.pageY,
+        timestamp: now,
+      });
+      lastEventTime = now;
+    }
   });
   document.addEventListener("scroll", (e) => {
     sendEvent("ScrollStart", {
