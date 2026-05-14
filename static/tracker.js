@@ -1,11 +1,19 @@
 (function () {
   const script = document.currentScript;
+  const eventQueue = [];
   const siteId = script.getAttribute("data-site-id");
   let maxDepth = 0;
   let reachedMilestones = new Set();
   const endpoint =
     script.getAttribute("data-endpoint") || "http://localhost:3000";
   function sendEvent(eventType, data = {}) {
+    eventQueue.push({
+      site_id: siteId,
+      event_type: eventType,
+      url: window.location.href,
+      timestamp: Date.now(),
+      data: data,
+    });
     fetch(`${endpoint}/ingest`, {
       method: "POST",
       headers: {
