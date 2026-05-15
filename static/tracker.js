@@ -1,13 +1,38 @@
 (function () {
   const script = document.currentScript;
-  const eventQueue = [];
+  let eventQueue = [];
   const siteId = script.getAttribute("data-site-id");
+  const maxBatchSize = 50;
+  const FLUSH_INTERVAL = 5000;
+
   let maxDepth = 0;
   let lastMouseMoveEventTime = 0;
   const throttleMS = 100;
   let reachedMilestones = new Set();
   const endpoint =
     script.getAttribute("data-endpoint") || "http://localhost:3000";
+
+  async function flush() {
+    if (eventQueue.length === 0) return;
+
+    const batch = [...eventQueue];
+    eventQueue = [];
+
+    try {
+      await fetch(`${endpoint}/ingest`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(batch),
+      });
+    } catch (err) {
+      console.error("Failed to send events", err);
+
+      eventQueue.unshift(...batch);
+    }
+  }
+
   function sendEvent(eventType, data = {}) {
     eventQueue.push({
       site_id: siteId,
@@ -16,18 +41,14 @@
       timestamp: Date.now(),
       data: data,
     });
-    fetch(`${endpoint}/ingest`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        site_id: siteId,
-        event_type: eventType,
-        url: window.location.href,
-        timestamp: Date.now(),
-        data: data,
-      }),
+    if (eventQueue.length > maxBatchSize) {
+      flush();
+    }
+    setInterval(flush, FLUSH_INTERVAL);
+    window.addEventListener("beforeunload", () => {
+      if (eventQueue.length > 0) {
+        navigator.sendBeacon(`${endpoint}/ingest`, JSON.stringify(eventQueue));
+      }
     });
   }
 
